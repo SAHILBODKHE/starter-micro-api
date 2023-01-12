@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: aqua;
+      }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        font-weight: 700;
+        
+      
+      }
+
+      td,
+      th {
+        /* border: 1px solid #dddddd; */
+        text-align: left;
+        border: 1px solid black;
+        padding: 20px;
+        height: 100px;
+      }
+
+      tr:nth-child(even) {
+        /* background-color: #dddddd; */
+        background-color: white;
+        height: 100px;
+      }
+      button {
+        background-color: black;
+        color: aliceblue;
+        height: 80px;
+        width: 200px;
+      }
+      h2 {
+        padding-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Nearest Hospital</h2>
+
+    <table>
+      <tr>
+        <th>Sr.no</th>
+        <th>Hospital Id</th>
+        <th>Hospname</th>
+        <th>Distance</th>
+        <th>Matches</th>
+      </tr>
+      <% for (i=0; i<dist.length ; i++ ){%>
+      <tr>
+        <td><%=i+1%></td>
+        <td><%=hospid[i]%></td>
+        <td><%=hospn[i]%></td>
+        <td><%=dist[i]%>km</td>
+        <td><button>Details</button></td>
+      </tr>
+      <%}%>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<style>
+     body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 500;
+font-size: 25px;
+background-color: #734ae8;
+background-image: linear-gradient(315deg, #734ae8 0%, #89d4cf 74%);
+color: white;
+      }
+      input{
+        background-color: #00b712;
+background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+color:black;
+
+
+      }
+      button:hover{
+        background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+      }
+      button{
+        background-color: #9eabe4;
+background-image: linear-gradient(315deg, #9eabe4 0%, #77eed8 74%);
+
+      }
+      table {
+        /* border-collapse: collapse;
+        width:300px;
+        font-size: 70px; */
+        border:1px solid black;
+       
+ 
+      }
+
+      th,
+      td {
+        text-align: left;
+        /* padding: 8px; */
+        border:1px solid black;
+ 
+      }
+
+      tr:nth-child(even) {
+        background-color: #d6eeee;
+        height: 100px;
+      }
+      table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+
+/* table, th, td {
+  border:1px solid black;
+ 
+  
+  
+  
+} */
+
+
+</style>
+<body>
+  
+                                                      <h1>Donor_Hospital_id:<%=hpd%></h1>
+                                                      
+                                                      <h2>Dead_Donor_id:<%=ud%></h2>
+                                                     <h3>OrgDoncode:<%=orgdc%></h3>
+ 
+  <br>
+  <br>
+   <table class="center">
+    <tr>
+     
+      <th>Hospital id</th>
+      <th>Hospitalname</th>
+      <th>Distance</th>
+    
+     <th hidden>recipient_id</th>
+     <th hidden>Bloodtype</th>
+     <th hidden>Tissuetype</th>
+     <th hidden>BodySize</th>
+     <th hidden>meld-peld-score</th>
+     <th hidden>lymphocytotoxic</th>
+     <th hidden>no_of_hla_antigens</th>
+     <th hidden>cmv_ebv_details</th>
+     <th hidden>recipient_report</th>
+     
+     <th>emergency_statuscode</th>
+     <!-- <th>regdate</th> -->
+    
+     <th>Match</th>
+    </tr>
+   <%for(i=0; i< hd.length ;i++){%>
+      
+          
+                <tr>
+                    <form action="/match<%=ud%>/<%=hpd%>/<%=orgdc%>/<%=orgn%>/<%=rd[i]%>" method="post">
+                     
+                    <td><input name='hosp_id' type="text" value='<%=hd[i]%>'    readonly/></td>
+                    <td><input name="hospname" type='text' value='<%=hm[i]%>'    readonly/></td>
+                    <td><input name="distance" type='text' value='<%=dst[i]%>'   readonly/></td>
+                    <td hidden><input name="recipient_id" type="text" value='<%=rd[i]%>'    readonly/></td>
+                    
+                    <td hidden><input name="bloodtype" type='text' value='<%=bdt[i]%>'   readonly/></td>
+                    
+                    <td hidden><input name="tissuetype" type="text" value='<%=tty[i]%>'   readonly/></td>
+                    <td hidden><input name="bodysize" type="text" value='<%=bsz[i]%>'   readonly/></td>
+                    <td hidden><input name="meld_peld_score" type="text" value='<%=mpsc[i]%>'  readonly/></td>
+                    <td hidden><input name="lymphocytotoxic" type="text"  value='<%=lphc[i]%>' readonly/></td>
+                    <td hidden><input name="no_of_hla_antigens" type="text" value='<%=nh[i]%>'    readonly/></td>
+                    <td hidden><input name="cmv_ebv_details" type="text" value='<%=cm[i]%>'    readonly/></td>
+                    <td hidden><input name="recipient_report" type="text" value='<%=rrp[i]%>' readonly/></td>
+                    
+                    <td><input name="emergency_statuscode" type="text" value='<%=esc[i]%>'   readonly/></td>
+                    <!-- <td><%=rgd[i]%></td> -->
+                    
+                    <td><button type="submit">Match</button></td>
+                    </form>
+                </tr>
+            <% } %>
+                
+              </table>
+          
+    
+</body>
+</html>

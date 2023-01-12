@@ -1,0 +1,105 @@
+<html>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+    /* body {
+      animation-name: example;
+      animation-duration: 10s;
+      animation-iteration-count: 5;
+    }
+    @keyframes example {
+      0% {
+        background-color: #ff9933;
+      }
+      25% {
+        background-color: white;
+      }
+      50% {
+        background-color: #138808;
+      }
+      100% {
+        background-color: rgb(226, 109, 66);
+      }
+    } */
+    body {
+      background-image: linear-gradient(rgb(226, 109, 66), white, #00b712);
+    }
+
+    .bgimg {
+      background-image: url('/w3images/forestbridge.jpg');
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 25px;
+    }
+
+    .topleft {
+      position: absolute;
+      top: 0;
+      left: 16px;
+    }
+
+    .bottomleft {
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+    }
+
+    .middle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    hr {
+      margin: auto;
+      width: 40%;
+    }
+    button {
+      color: white;
+      background-color: rgb(153, 50, 204);
+    }
+  </style>
+  <body>
+    <div class="w3-container">
+      <h2>National Transplant Waiting List</h2>
+      <div class="bgimg">
+        <img src="./img/together1.jpg" alt="" />
+        <div class="topleft">
+          <p>OPTIMIZE</p>
+        </div>
+        <div class="middle">
+          <h1>Your Chance</h1>
+          <hr />
+          <p>Coming Soon.......</p>
+          <form action="/ntwl.html" method="post">
+            <label for="Donor Id">
+              Donor id
+            </label>
+
+            <input id="drid" type="text" name="did" required />
+            <br />
+            <label for="Password">
+              Password
+            </label>
+            <input id="pwid" type="text" name="pid" required />
+            <br />
+
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

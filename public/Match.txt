@@ -1,0 +1,282 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (14.1)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# /c orgtrans
+postgres-# \c orgtrans
+You are now connected to database "orgtrans" as user "postgres".
+orgtrans-# /dt braindeath
+orgtrans-# ;
+ERROR:  syntax error at or near "/"
+LINE 1: /c orgtrans
+        ^
+orgtrans=# \dt braindeath
+           List of relations
+ Schema |    Name    | Type  |  Owner
+--------+------------+-------+----------
+ public | braindeath | table | postgres
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath;
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score | regdate | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report
+--------------+----------+-----------+------------+----------+-----------------+---------+-----------------+--------------------+-----------------+---------------+------------------
+(0 rows)
+
+
+orgtrans=# SELECT * FROM recipient;
+ recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              |        110000 |                    1 | 2022-01-31 00:00:00+05:30 | no
+            2 | 1121   | b+ve      | dk         |       32 |              22 |                 |                 21 | no              |        101000 |                    1 | 2022-01-31 00:00:00+05:30 | no
+            3 | 1121   | b+ve      | dk         |       10 |             100 |                 |                 35 | no              |        101010 |                    1 | 2022-02-04 00:00:00+05:30 | no
+(3 rows)
+
+
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.organ_doncode like '_1%' AND recipient.organ_reqcode like '_1%';
+ERROR:  operator does not exist: integer ~~ unknown
+LINE 1: ... Inner JOIN recipient ON braindeath.organ_doncode like '_1%'...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%';
+ERROR:  operator does not exist: integer ~~ unknown
+LINE 1: ...braindeath  Inner JOIN recipient ON organ_doncode like '_1%'...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like _1% AND organ_reqcode like _1%;
+ERROR:  syntax error at or near "AND"
+LINE 1: ...h  Inner JOIN recipient ON organ_doncode like _1% AND organ_...
+                                                             ^
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like _1% AND organ_reqcode like _1%;
+ERROR:  syntax error at or near "AND"
+LINE 1: ...h  Inner JOIN recipient ON organ_doncode like _1% AND organ_...
+                                                             ^
+orgtrans=# SELECT * FROM car Inner JOIN person ON car.make like '_M%' AND person.make like 'M%';
+ERROR:  relation "car" does not exist
+LINE 1: SELECT * FROM car Inner JOIN person ON car.make like '_M%' A...
+                      ^
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like _1% AND organ_reqcode like _1%;
+ERROR:  syntax error at or near "AND"
+LINE 1: ...h  Inner JOIN recipient ON organ_doncode like _1% AND organ_...
+                                                             ^
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%';
+ERROR:  operator does not exist: integer ~~ unknown
+LINE 1: ...braindeath  Inner JOIN recipient ON organ_doncode like '_1%'...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# SELECT * FROM braindeath;
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              |        111111 | nothing
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath  where braindeath.organ_doncode like '_1%';
+ERROR:  operator does not exist: integer ~~ unknown
+LINE 1: ...* FROM braindeath  where braindeath.organ_doncode like '_1%'...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# SELECT * FROM braindeath  where organ_doncode like '_1%';
+ERROR:  operator does not exist: integer ~~ unknown
+LINE 1: SELECT * FROM braindeath  where organ_doncode like '_1%';
+                                                      ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# ALTER TABLE assets
+orgtrans-#     ALTER COLUMN location TYPE VARCHAR,
+orgtrans-#     ALTER COLUMN description TYPE VARCHAR;;;;
+ERROR:  relation "assets" does not exist
+orgtrans=# ALTER TABLE braindeath
+orgtrans-# ALTER COLUMN organ_doncode TYPE VARCHAR;
+ALTER TABLE
+orgtrans=# SELECT * FROM braindeath  where organ_doncode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing
+(1 row)
+
+
+orgtrans=# ALTER TABLE recipient
+orgtrans-# ALTER COLUMN organ_reqcode TYPE VARCHAR;
+ALTER TABLE
+orgtrans=# SELECT * FROM recipient  where organ_reqcode like '_1%';
+ recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report | recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath where deaddonor_id=7 Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%';
+ERROR:  syntax error at or near "Inner"
+LINE 1: SELECT * FROM braindeath where deaddonor_id=7 Inner JOIN rec...
+                                                      ^
+orgtrans=# SELECT * FROM braindeath where deaddonor_id=7;
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath where deaddonor_id=7 in (Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%');
+ERROR:  syntax error at or near "JOIN"
+LINE 1: ... * FROM braindeath where deaddonor_id=7 in (Inner JOIN recip...
+                                                             ^
+orgtrans=# SELECT * FROM braindeath where deaddonor_id=7 in (SELECT * FROM braindeath Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%');
+ERROR:  subquery has too many columns
+LINE 1: SELECT * FROM braindeath where deaddonor_id=7 in (SELECT * F...
+                                                      ^
+orgtrans=# SELECT * FROM braindeath where deaddonor_id=7 = (SELECT * FROM braindeath Inner JOIN recipient ON organ_doncode like '_1%' AND organ_reqcode like '_1%');
+ERROR:  syntax error at or near "="
+LINE 1: SELECT * FROM braindeath where deaddonor_id=7 = (SELECT * FR...
+                                                      ^
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report | recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report | recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(1 row)
+
+
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report | recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            2 | 1121   | b+ve      | dk         |       32 |              22 |                 |                 21 | no              | 111000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(2 rows)
+
+
+orgtrans=# SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+ deaddonor_id | hospi_id | bloodtype | tissuetype | bodysize | meld_peld_score |          regdate          | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_doncode | deaddonor_report | recipient_id | hospid | bloodtype | tissuetype | bodysize | meld_peld_score | lymphocytotoxic | no_of_hla_antigens | cmv_ebv_details | organ_reqcode | emergency_statuscode |          regdate          | recipient_report
+--------------+----------+-----------+------------+----------+-----------------+---------------------------+-----------------+--------------------+-----------------+---------------+------------------+--------------+--------+-----------+------------+----------+-----------------+-----------------+--------------------+-----------------+---------------+----------------------+---------------------------+------------------
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            1 | 1121   | b+ve      | dk         |       34 |              22 |                 |                 12 | no              | 110000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+            7 | 11239    | b-ve      | small      |       76 |              90 | 2022-03-25 00:00:00+05:30 | np              |                100 | no              | 111111        | nothing          |            2 | 1121   | b+ve      | dk         |       32 |              22 |                 |                 21 | no              | 111000        |                    1 | 2022-01-31 00:00:00+05:30 | no
+(2 rows)
+
+
+orgtrans=# CREATE VIEW matchdetails_V AS SELECT * FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+ERROR:  column "bloodtype" specified more than once
+orgtrans=# CREATE VIEW matchdetails_V AS SELECT hospi_id,deaddonor_id FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%';
+CREATE VIEW
+orgtrans=# CREATE VIEW matchdetails_V AS (SELECT hospi_id,deaddonor_id FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%');
+CREATE VIEW
+orgtrans=# CREATE VIEW matchdetails_V AS (SELECT hospi_id,deaddonor_id,recipient_id,hospid FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%');
+ERROR:  relation "matchdetails_v" already exists
+orgtrans=# CREATE VIEW matchdetails_V AS (SELECT hospi_id,deaddonor_id,recipient_id,hospid FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%');
+CREATE VIEW
+orgtrans=# SELECT * FROM matchdetails_V;
+ hospi_id | deaddonor_id | recipient_id | hospid
+----------+--------------+--------------+--------
+ 11239    |            7 |            1 | 1121
+ 11239    |            7 |            2 | 1121
+(2 rows)
+
+
+orgtrans=# SELECT * FROM matchdetails_V Inner join hospitalinfo ON hospid=hosp_id;
+ hospi_id | deaddonor_id | recipient_id | hospid | hosp_id | hospname | hosp_address | phone | website | organs | longitude | latitude | geolocation
+----------+--------------+--------------+--------+---------+----------+--------------+-------+---------+--------+-----------+----------+-------------
+(0 rows)
+
+
+orgtrans=# SELECT * FROM matchdetails_V Inner join hospitalinfo ON hospid=hosp_id;
+ hospi_id | deaddonor_id | recipient_id | hospid | hosp_id | hospname |             hosp_address             |   phone    |    website    | organs | longitude  | latitude  |                    geolocation
+----------+--------------+--------------+--------+---------+----------+--------------------------------------+------------+---------------+--------+------------+-----------+----------------------------------------------------
+ 11239    |            7 |            2 | 1121   | 1121    | anu      | B-74/7 Government Colony Bandra East | 9999459999 | anu@gmail.com | kidney | -87.626396 | 41.888866 | 0101000020E610000018963FDF16E855C05F43705CC6F14440
+ 11239    |            7 |            1 | 1121   | 1121    | anu      | B-74/7 Government Colony Bandra East | 9999459999 | anu@gmail.com | kidney | -87.626396 | 41.888866 | 0101000020E610000018963FDF16E855C05F43705CC6F14440
+(2 rows)
+
+
+orgtrans=# CREATE VIEW AS nearloc_V AS (SELECT * FROM matchdetails_V Inner join hospitalinfo ON hospid=hosp_id);
+ERROR:  syntax error at or near "AS"
+LINE 1: CREATE VIEW AS nearloc_V AS (SELECT * FROM matchdetails_V In...
+                    ^
+orgtrans=# CREATE VIEW  nearloc_V AS (SELECT * FROM matchdetails_V Inner join hospitalinfo ON hospid=hosp_id);
+CREATE VIEW
+orgtrans=# select a.hospi_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from nearloc_V a,lateral(select hosp_id,geolocation from nearloc_V where hospi_id=$1)as mum where a.hosp_id <> mum.hospid order by distance limit 5 ;
+ERROR:  there is no parameter $1
+LINE 1: ...hosp_id,geolocation from nearloc_V where hospi_id=$1)as mum ...
+                                                             ^
+orgtrans=# select a.hospi_id,hospname,ST_Distance("0101000020E61000009932CBF9BD355240EDC15A6BDE113340",mum.geolocation) as distance from nearloc_V a,lateral(select hosp_id,geolocation from nearloc_V where hospi_id=11239)as mum where a.hosp_id <> mum.hospid order by distance limit 2 ;
+ERROR:  operator does not exist: character varying = integer
+LINE 1: ... hosp_id,geolocation from nearloc_V where hospi_id=11239)as ...
+                                                             ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+orgtrans=# select a.hospi_id,hospname,ST_Distance("0101000020E61000009932CBF9BD355240EDC15A6BDE113340",mum.geolocation) as distance from nearloc_V a,lateral(select hosp_id,geolocation from nearloc_V where hospi_id='11239')as mum where a.hosp_id <> mum.hospid order by distance limit 2 ;
+ERROR:  column "0101000020E61000009932CBF9BD355240EDC15A6BDE113340" does not exist
+LINE 1: select a.hospi_id,hospname,ST_Distance("0101000020E610000099...
+                                               ^
+orgtrans=# select a.hospi_id,hospname,ST_Distance(0101000020E61000009932CBF9BD355240EDC15A6BDE113340,mum.geolocation) as distance from nearloc_V a,lateral(select hosp_id,geolocation from nearloc_V where hospi_id='11239')as mum where a.hosp_id <> mum.hospid order by distance limit 2 ;
+ERROR:  syntax error at or near "CBF9BD355240EDC15A6BDE113340"
+LINE 1: ...spi_id,hospname,ST_Distance(0101000020E61000009932CBF9BD3552...
+                                                             ^
+orgtrans=# select a.hospi_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from nearloc_V a,lateral(select hosp_id,geolocation from nearloc_V where hospi_id='11239')as mum where a.hosp_id <> mum.hospid order by distance limit 5 ;
+ERROR:  column mum.hospid does not exist
+LINE 1: ... where hospi_id='11239')as mum where a.hosp_id <> mum.hospid...
+                                                             ^
+HINT:  Perhaps you meant to reference the column "mum.hosp_id".
+orgtrans=# select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from nearloc_V where hosp_id='11239')as mum where a.hosp_id <> mum.hosp_id order by distance limit 5 ;
+ hosp_id | hospname | distance
+---------+----------+----------
+(0 rows)
+
+
+orgtrans=# select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from hospitalinfo where hosp_id=$1)as mum where a.hosp_id <> mum.hosp_id order by distance limit 5 ;
+ERROR:  there is no parameter $1
+LINE 1: ...sp_id,geolocation from hospitalinfo where hosp_id=$1)as mum ...
+                                                             ^
+orgtrans=# select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from hospitalinfo where hosp_id='11239')as mum where a.hosp_id <> mum.hosp_id order by distance limit 5 ;
+ hosp_id  | hospname |     distance
+----------+----------+-------------------
+ 12345698 | kl       |      177.96954069
+ 1110     | bhabha   |      181.39244904
+ 1119021  | George   |  4749933.37492886
+ 1113     | Asian    | 12865543.88274516
+ 1121     | anu      | 12963988.47450534
+(5 rows)
+
+
+orgtrans=# select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from hospitalinfo where hosp_id='11239')as mum where a.hosp_id <> mum.hosp_id order by distance limit 5 Inner Join nearloc_V on hospid=hosp_id;
+ERROR:  syntax error at or near "Inner"
+LINE 1: ....hosp_id <> mum.hosp_id order by distance limit 5 Inner Join...
+                                                             ^
+orgtrans=# CREATE VIEW geloc_V AS (select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from hospitalinfo where hosp_id='11239')as mum where a.hosp_id <> mum.hosp_id order by distance limit 5) ;
+CREATE VIEW
+orgtrans=# SELECT * FROM geloc_V Inner join nearloc_V ON hosp_id=hospid;
+ERROR:  column reference "hosp_id" is ambiguous
+LINE 1: SELECT * FROM geloc_V Inner join nearloc_V ON hosp_id=hospid...
+                                                      ^
+orgtrans=# SELECT * FROM geloc_V Inner join nearloc_V ON geloc_V.hosp_id=hospid;
+ hosp_id | hospname |     distance      | hospi_id | deaddonor_id | recipient_id | hospid | hosp_id | hospname |             hosp_address             |   phone    |    website    | organs | longitude  | latitude  |                    geolocation
+---------+----------+-------------------+----------+--------------+--------------+--------+---------+----------+--------------------------------------+------------+---------------+--------+------------+-----------+----------------------------------------------------
+ 1121    | anu      | 12963988.47450534 | 11239    |            7 |            1 | 1121   | 1121    | anu      | B-74/7 Government Colony Bandra East | 9999459999 | anu@gmail.com | kidney | -87.626396 | 41.888866 | 0101000020E610000018963FDF16E855C05F43705CC6F14440
+ 1121    | anu      | 12963988.47450534 | 11239    |            7 |            2 | 1121   | 1121    | anu      | B-74/7 Government Colony Bandra East | 9999459999 | anu@gmail.com | kidney | -87.626396 | 41.888866 | 0101000020E610000018963FDF16E855C05F43705CC6F14440
+(2 rows)
+
+
+orgtrans=# SELECT hosp_id,distance,hospname FROM geloc_V Inner join matchdetails_V ON geloc_V.hosp_id=hospid;
+ hosp_id |     distance      | hospname
+---------+-------------------+----------
+ 1121    | 12963988.47450534 | anu
+ 1121    | 12963988.47450534 | anu
+(2 rows)
+
+
+orgtrans=#

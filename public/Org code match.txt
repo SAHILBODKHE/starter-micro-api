@@ -1,0 +1,2 @@
+ SELECT * FROM car Inner JOIN person ON car.make like '_M%' AND person.make like 'M%';
+in this use donors tablename instead of car and recipient table name instead of person and organ code instead of make.

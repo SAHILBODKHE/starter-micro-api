@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<style>
+   body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 500;
+font-size: 25px;
+background-color: #734ae8;
+background-image: linear-gradient(315deg, #734ae8 0%, #89d4cf 74%);
+color: white;
+      }
+      input{
+        background-color: #00b712;
+background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+color:black;
+
+
+      }
+      button:hover{
+        background-color: #3bb78f;
+background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+      }
+      button{
+        background-color: #9eabe4;
+background-image: linear-gradient(315deg, #9eabe4 0%, #77eed8 74%);
+
+      }
+      table {
+        /* border-collapse: collapse;
+        width:300px;
+        font-size: 70px; */
+        border:1px solid black;
+       
+ 
+      }
+
+      th,
+      td {
+        text-align: left;
+        /* padding: 8px; */
+        border:1px solid black;
+ 
+      }
+
+      tr:nth-child(even) {
+        background-color: #d6eeee;
+        height: 100px;
+      }
+      table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+        /* body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        } */
+          
+        .geeks {
+            width: 20px;
+            height: 20px;
+            
+            background: green;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgb(127, 153, 127),
+                        0 0 40px rgb(127, 153, 127), 
+                        0 0 60px rgb(127, 153, 127), 
+                        0 0 80px rgb(127, 153, 127), 
+                        0 0 120px rgb(127, 153, 127),
+                        0 0 220px rgb(127, 153, 127),
+                        0 0 320px rgb(127, 153, 127);
+            transition: 2s;
+        }
+          
+        .geeks:hover {
+            box-shadow: 0 0 0 30px rgb(83, 224, 83), 
+                        0 0 0 60px rgb(83, 224, 83),
+                        0 0 0 100px rgb(83, 224, 83),
+                        0 0 0 120px rgb(82, 226, 82), 
+                        0 0 0 200px rgb(37, 214, 37),
+                        0 0 0 400px rgb(27, 165, 27), 
+                        0 0 0 450px rgb(63, 235, 63);
+        }
+
+</style>
+<body>
+   <H1>Donor Hospital<%=hpd%></H1>
+   <h2>Dead Donor id<%=ud%></h2>
+   <h3>OrgDoncode <%=orgdc%></h3>
+   <h4>Deadth Reg:<%=ddt%></h4>
+      
+            <table class="center">
+                <tr>
+                  <th>Hospital id</th>
+                  <td><input name='hospi_id' type="text" value='<%=hd%>'    readonly/></td>
+</tr>                 
+
+
+
+
+<tr>
+                  <th>Hospitalname</th>
+                  <td><input name="hospname" type='text' value='<%=hm%>'    readonly/></td>
+
+                  </tr>
+                  <tr>
+                  <th>Distance</th>
+                  <td><input name="distance" type='text' value='<%=dst%>'   readonly/></td>
+                  
+                  </tr>
+                  <tr>
+                 <th >recipient_id</th>
+                 <td><input name="recipient_id" type="text" value='<%=rd%>'    readonly/></td>
+                
+                </tr>
+                <tr>
+                 <th >Bloodtype</th>
+                 <td><input name="recbloodtype" type='text' value='<%=bdt%>'   readonly/></td>
+                 <td><input name="deadbloodtype" type='text' value='<%=dbd%>'   readonly/></td>
+                 </tr>
+                 <tr>
+                 <th >Tissuetype</th>
+                 <td><input name="rectissuetype" type="text" value='<%=tty%>'   readonly/></td>
+                 <td><input name="dtissuetype" type="text" value='<%=dtt%>'   readonly/></td>
+                 </tr>
+                 <tr>
+                     <th>BodySize</th>
+                     <td ><input name="rbodysize" type="text" value='<%=bsz%>'   readonly/></td>
+                     <td ><input name="dbodysize" type="text" value='<%=dbs%>'   readonly/></td>
+                 </tr>
+                 <tr><th>meld-peld-score</th>
+                    <td><input name="recmeld_peld_score" type="text" value='<%=mpsc%>'  readonly/></td>
+                    <td><input name="dmeld_peld_score" type="text" value='<%=dpsc%>'  readonly/></td>
+                 </tr>
+                 <tr>
+                 <th>lymphocytotoxic</th>
+                 <td><input name="reclymphocytotoxic" type="text"  value='<%=lphc%>' readonly/></td>
+                 <td><input name="dlymphocytotoxic" type="text"  value='<%=dlph%>' readonly/></td>
+                </tr> 
+                <tr>
+                <th>no_of_hla_antigens</th>
+                <td><input name="recno_of_hla_antigens" type="text" value='<%=nh%>' readonly/></td>
+                <td><input name="dno_of_hla_antigens" type="text" value='<%=dnh%>' readonly/></td>
+                </tr>
+                <tr> <th>cmv_ebv_details</th>
+                    <td><input name="reccmv_ebv_details" type="text" value='<%=cm%>'    readonly/></td>
+                    <td><input name="dcmv_ebv_details" type="text" value='<%=dcm%>'    readonly/></td>
+                </tr>
+                <tr><th>recipient_report</th>
+                    <td><input name="recipient_report" type="text" value='<%=rrp%>' readonly/></td>
+                    <td><input name="deaddonor_report" type="text" value='<%=drp%>' readonly/></td>
+                </tr>
+               <tr>
+                  <th>emergency_statuscode</th>
+                  <td><input name="emergency_statuscode" type="text" value='<%=esc%>'   readonly/></td></tr>
+                <tr>
+                 <th>Match</th>
+                 <td><button onclick="window.print()">Print this page</button></td>
+                </tr>
+                <!-- <tr> -->
+                    <!-- <form action="/match<%=ud%>/<%=orgn%>/<%=rd%>/finalmatch" method="post"> -->
+                    <!-- <td><input name='hospi_id' type="text" value='<%=hd%>'    readonly/></td> -->
+                    <!-- <td><input name="hospname" type='text' value='<%=hm%>'    readonly/></td> -->
+                    <!-- <td><input name="distance" type='text' value='<%=dst%>'   readonly/></td> -->
+                    <!-- <td><input name="recipient_id" type="text" value='<%=rd%>'    readonly/></td> -->
+                    
+                    <!-- <td><input name="bloodtype" type='text' value='<%=bdt%>'   readonly/></td>
+                    
+                    <td><input name="tissuetype" type="text" value='<%=tty%>'   readonly/></td> -->
+                    <!-- <td ><input name="bodysize" type="text" value='<%=bsz%>'   readonly/></td> -->
+                    <!-- <td><input name="meld_peld_score" type="text" value='<%=mpsc%>'  readonly/></td> -->
+                    <!-- <td><input name="lymphocytotoxic" type="text"  value='<%=lphc%>' readonly/></td> -->
+                    <!-- <td><input name="no_of_hla_antigens" type="text" value='<%=nh%>' readonly/></td> -->
+                    <!-- <td><input name="cmv_ebv_details" type="text" value='<%=cm%>'    readonly/></td> -->
+                    <!-- <td><input name="recipient_report" type="text" value='<%=rrp%>' readonly/></td> -->
+                    
+                    <!-- <td><input name="emergency_statuscode" type="text" value='<%=esc%>'   readonly/></td> -->
+                
+                    
+                    <!-- <td><button type="submit">Match</button></td> -->
+                    <!-- </form> -->
+                <!-- </tr> -->
+            
+                
+              </table>
+              <div class="container2">
+                <div class="title">Finalize Match</div>
+                <div class="Content">
+                  <form action="/finalmatch/<%=ud%>:<%=rd%>/<%=orgn%>" method="post">
+                    <div class="user details">
+                      <br />
+                      <div class="input-box">
+                        <span class="details">Enter ID</span>
+                        <input type="text" name='recipient_id' placeholder="Enter the confirmed ID" />
+                      </div>
+                      <br />
+                      <div class="input-box">
+                        <span  class="details">Enter Hospital ID</span>
+                        <input
+                        name="rec_hosp_id"
+                          type="text"
+                          placeholder="Enter the confirmed Hospital ID"
+                        />
+                      </div>
+                    </div>
+                    <div class="button geeks">
+                      <input type="submit" value="GO" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+    
+</body>
+</html>

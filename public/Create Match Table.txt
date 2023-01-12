@@ -1,0 +1,30 @@
+ CREATE TABLE MATCH(
+
+    MATCH_ID uuid DEFAULT uuid_generate_v4 () PRIMARY KEY,
+   
+
+ recipient_id INTEGER,
+ bloodtype VARCHAR(10),
+ tissuetype VARCHAR(10),
+ bodysize   INTEGER,
+ MELD_PELD_score INTEGER,
+ regdate DATE,
+ lymphocytotoxic VARCHAR(100),
+ no_of_HLA_antigens INTEGER,
+ CMV_EBV_details VARCHAR(100),
+ Organ_reqcode INTEGER,
+ emergency_statuscode INTEGER,
+ recipient_report VARCHAR(500),
+ deaddonor_id INTEGER,
+ hospi_id VARCHAR(20),
+ dbloodtype VARCHAR(10),
+ dtissuetype VARCHAR(10),
+ dbodysize   INTEGER,
+ dMELD_PELD_score INTEGER,
+ dregdate DATE,
+ dlymphocytotoxic VARCHAR(100),
+ dno_of_HLA_antigens INTEGER,
+ dCMV_EBV_details VARCHAR(100),
+ dOrgan_doncode INTEGER,
+ deaddonor_report VARCHAR(500),
+ Match_orgCode VARCHAR(10) );

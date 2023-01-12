@@ -1,0 +1,5 @@
+CREATE VIEW matchdetails_V AS ( SELECT hospi_id,deaddonor_id,recipient_id,hospid, recipient.bloodtype, recipient.tissuetype,recipient.bodysize,recipient.meld_peld_score,recipient.lymphocytotoxic,recipient.no_of_hla_antigens,recipient.cmv_ebv_details, emergency_statuscode, recipient.regdate , recipient_report FROM braindeath  Inner JOIN recipient ON braindeath.deaddonor_id=7 AND recipient.organ_reqcode like '_1%');
+
+CREATE VIEW geloc_V AS (select a.hosp_id,hospname,ST_Distance(a.geolocation,mum.geolocation) as distance from hospitalinfo a,lateral(select hosp_id,geolocation from hospitalinfo where hosp_id='11239')as mum where a.hosp_id <> mum.hosp_id order by distance limit 5) ;
+
+SELECT * FROM geloc_V Inner join matchdetails_V ON geloc_V.hosp_id=hospid;

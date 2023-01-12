@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 500;
+font-size: 50px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 70px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        
+      }
+
+      tr:nth-child(even) {
+        background-color: #d6eeee;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>List Of Doctors</h2>
+    <p>
+     Refer the following info for Appointement details and doctor info .
+    </p>
+
+    <table>
+      <tr>
+        <th>Srno</th>
+        <th>Doctor NAME</th>
+        <th>Contact</th>
+        <th>Appointement time</th>
+      </tr>
+      <% for (i=0;i<dnm.length; i++) {%>
+      <tr>
+          <td><%=i+1%></td>
+        <td><%=dnm[i]%></td>
+        <td><%=dph[i]%></td>
+        <td><%=apt[i]%></td>
+      </tr>
+      <%}%>
+    </table>
+  </body>
+</html>
