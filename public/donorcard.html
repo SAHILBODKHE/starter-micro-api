@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="OPTIMIZE PRIME" />
+    <meta name="generator" content="Hugo 0.88.1" />
+    <title>Donor card page</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.1/examples/checkout/"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      } */
+      body {
+        background-color: #21d190;
+        background-image: linear-gradient(315deg, #21d190 0%, #d65bca 74%);
+      }
+    </style>
+
+    <link href="css/form-validation.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <img
+            class="d-block mx-auto mb-4"
+            src="./img/formfill.jpg"
+            alt=""
+            width="72"
+            height="57"
+          />
+          <h2>Donor card application form</h2>
+          <p class="lead">
+            It is vital to express your sincerest thanks for the donation which
+            has helped to our Organization for a noble cause. The money totally
+            belongs to the one who are in needs and we will take care of it .
+          </p>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Donor info</h4>
+            <form
+              class="needs-validation"
+              id="donor card"
+              action="/donorcard.html"
+              method="post"
+            >
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">First name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    name="firstname"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">Last name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    name="lastName"
+                    placeholder=""
+                    value=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="AADHARname" class="form-label">AADHAR CARD</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text">12 digit id</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="userid"
+                      name="aadhar_id"
+                      placeholder="User id"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Your AADHAR NUMBER is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="email" class="form-label">
+                    Email
+                    <span class="text-muted"></span>
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email_id"
+                    placeholder="you@example.com"
+                  />
+                  <div class="invalid-feedback">
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="address" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    name="address"
+                    placeholder="1234 Main St"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please enter your address.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="address2" class="form-label">
+                    Phone no
+                    <span class="text-muted"></span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobile"
+                    name="mobile_no"
+                    placeholder=""
+                  />
+                </div>
+
+                <div class="col-md-5">
+                  <label for="country" class="form-label">Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="country"
+                    name="nation"
+                    placeholder=""
+                  />
+                  <div class="invalid-feedback">
+                    Please select a valid country.
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="state" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="state"
+                    name="state"
+                    placeholder=""
+                  />
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <label for="zip" class="form-label">Zip</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="zip"
+                    name="code"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Zip code required.
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">Height</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="height"
+                    name="height"
+                    placeholder="in cm"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    height required
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">Weight</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="weight"
+                    name="weight"
+                    placeholder="in kg"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    weight required
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">Gender</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="gender"
+                    name="gender"
+                    placeholder="M,F,N"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    gender required
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+              <h5 class="mb-3">
+                Once my death has been confirmed and the death certification has
+                been released by a physician, I hereby give permission to
+                donate:
+              </h5>
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="same-address"
+                />
+                <label class="form-check-label" for="same-address">
+                  all my organs and tissues
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="save-info"
+                />
+                <label class="form-check-label" for="save-info">
+                  specific organs and/or tissues
+                </label>
+              </div>
+
+              <hr class="my-4" />
+
+              <h4 class="mb-3">
+                I authorize you to use my organs/tissues for:
+              </h4>
+
+              <div class="my-3">
+                <div class="form-check">
+                  <input
+                    id="credit"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    checked
+                    required
+                  />
+                  <label class="form-check-label" for="credit">Reasearch</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    id="debit"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="debit">Transplant</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    id="paypal"
+                    name="paymentMethod"
+                    type="radio"
+                    class="form-check-input"
+                    required
+                  />
+                  <label class="form-check-label" for="paypal">
+                    Reasearch & Transplant
+                  </label>
+                </div>
+              </div>
+
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label">Father's name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fname"
+                    name="fathername"
+                    placeholder=""
+                    required
+                  />
+                  <small class="text-muted">
+                    Father's name as displayed on card
+                  </small>
+                  <div class="invalid-feedback">
+                    Father's Name is required
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label">
+                    Mother's name
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mname"
+                    name="mothername"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Mother's name is required
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+
+              <button class="w-100 btn btn-primary btn-lg" type="submit">
+                Get Donor card
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="my-5 pt-5 text-light text-center text-small">
+        <p class="mb-1">&copy; 2021 ORG TRANS</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">OPTIMIZE PRIME</a></li>
+          <li class="list-inline-item"><a href="#">MEMBERS</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="js/form-validation.js"></script>
+  </body>
+</html>

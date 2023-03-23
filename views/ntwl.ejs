@@ -1,0 +1,118 @@
+<html>
+  <title>W3.CSS</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <style>
+    body{
+      background-color: #20bf55;
+      background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    }
+.adjust{
+    padding-left: 600px;
+     padding-top:200px ;
+}
+.lightish{
+    color:black;
+    background: linear-gradient(to bottom, #9be15d, #00e3ae);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    width: 1000px;
+    
+}
+.btn{
+padding-left:120px;
+font-size: 30px;
+
+}
+.hidden{
+    display: none;
+}
+h2,p{
+    padding-left: 700px;
+    font-size: 70px;
+    
+}
+  </style>
+  
+  <body>
+
+    
+      
+        <h2>NTWL  List</h2>
+        <p>
+          RECIPIENT  list:
+        </p>
+        <div class="w3-container adjust">
+        <ul class="w3-ul w3-card-4  lightish">
+            <% for (var i=0; i<NAME.length; i++){%>
+              <form action="/ntwl/<%=i+1%>" method="post">
+          <li class="w3-bar">
+            <div class="w3-bar-item">
+              <span class="w3-large"></span>
+              <br />
+              <span><%= idno[i] %> </span>
+              <span><%= NAME[i] %></span>  <span><I><%=lastn[i]%></I></span><span>___</span><span>Hospital-id:<%=hospidno[i]%></span><br>
+              <button type="submit">Details</button>
+              <!-- <div id='info' class="w3 hidden">
+             <span><%= adc[i] %></span><br>
+            <span><%= emailid[i] %></span><br><span><%= addr[i] %></span><br><span><%= mn[i] %></span><br><span><%= nation[i] %></span><br><span><%= state[i] %></span><br><span><%= zipcode[i] %></span><br><span><%= htg[i] %></span><br><span><%= wtg[i] %></span><span><%= gend[i] %></span><br><span><%= fat[i] %></span><br><span><%= mom[i] %></span><br><span><%= odt[i] %></span><br><span><%= bdt[i] %></span><br><span><%= tst[i] %></span><br><span><%= bsz[i] %></span><br><span><%= mpsco[i] %></span><br><span><%= lyt[i] %></span><br><span><%= nha[i] %></span>
+            <span><%= cb[i] %></span><br><span><%= orc[i] %></span><br><span><%= es[i] %></span><br><span><%= rg[i] %></span><br><span><%= rrp[i] %></span>
+            </div>
+            </div>
+        </li> -->
+        <!-- <script>
+            var ele=document.getElementById('info')
+        document.addEventListener("click", function(){
+          ele.classList.remove('hidden')
+        });
+        </script> -->
+      </form>
+        <% } %>
+
+        </ul>
+        
+    
+    </div>
+    
+    <!-- emailid: em,
+    addr: add,
+    mn: pn,
+    nation: cn,
+    state: stn,
+    zipcode: zp,
+    htg: ht,
+    wtg: wt,
+    gend: gen,
+    fat: fan,
+    mom: mon,
+    odt: orgdt,
+    bdt: btype,
+    tst: ttype,
+    bsz: bs,
+    mpsco: mps,
+    lyt: lt,
+    nha: nlha,
+    cb: cbd,
+    orc: orq,
+    es: esc,
+    rg: rgd,
+    rrp: rr, -->
+
+    <!-- <script>
+        var ele=document.getElementById('info')
+    document.addEventListener("click", function(){
+      ele.classList.remove('hidden') -->
+    <!-- });
+//     document.querySelector('w3').addEventListener('click', function (e) {
+//   e.preventDefault();
+
+//   // Matching strategy
+//   if (e.target.classList.contains('hidden')) {
+//     const id = e.target.getAttribute('href');
+//     e.classList.remove('hidden')
+//   }
+// }); -->
+    <!-- </script> -->
+  </body>
+</html>

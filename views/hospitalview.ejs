@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <style>
+    body {
+      background: linear-gradient(to top, #ffcccc 0%, #00ffff 100%);
+    }
+    .info{
+      font-size: 20px;
+      color:#00ffff;
+      font-weight: 300;
+      font-style:italic;
+      text-align: center;
+      background-color:rgb(4, 4, 32);
+      border:solid 2mm #00e3ae;
+      border-radius: 40px;
+    }
+  </style>
+  <body>
+    <div class="info">
+    <h1><%=hsp[0]%></h1>
+    <p>
+        <b>Hospital-ID<%=hpi[0]%></b><br>
+        <H2>This a <%=orgn[0]%> Transplant Hospital</H2><br>
+        Address:<%=hadd[0]%><br>
+        Phone:<%=pho[0]%><br>
+        Website:<%=webs[0]%>
+
+    </p></div>
+    <!-- Projects -->
+    <div id="projects" class="w3-container w3-padding-32">
+      <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+        Hospital service
+      </h2>
+    </div>
+
+    <div class="w3-row-padding">
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/doctor">Doctor</a>
+          </div>
+          <img
+            src="/img/banner-img-doctor.jpg"
+            alt="doctor"
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/chemists">chemists</a>
+          </div>
+          <img
+            src="/img/220-SM707122.jpg"
+            alt="chemists"
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/transplantcoordinator">transplant co-ordinator</a>
+          </div>
+          <img
+            src="/img/maxresdefault.jpg"
+            alt="co-ordinator"
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/bloodbank">Blood bank</a>
+          </div>
+          <img
+            src="/img/blood-bank-bowring.jpg"
+            alt="bloodbank"
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/labs">Labs</a>
+          </div>
+          <img src="/img/fig1.jpg" alt="labs" style="width: 100%;" />
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/medicalsupplies">Medical Supplies</a>
+          </div>
+          <img
+            src="/img/Tc10849194_g.jpg"
+            alt="medical Supplies"
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">
+            <a href="/hospsearch/<%=hpi%>/ambulance">Ambulance</a>
+          </div>
+          <img src="/img/hal121230.jpg" alt="Ambulance" style="width: 100%;" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

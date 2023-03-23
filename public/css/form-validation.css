@@ -1,0 +1,17 @@
+.container {
+    max-width: 960px;
+  
+  }
+  .form-label{
+    color: azure;
+  }
+  .lead{
+    color:azure;
+  }
+  /* .list-inline-item{
+    color: azure;
+  } */
+  .by{
+    background-image: radial-gradient(farthest-corner at 40px 40px,
+      #f35 0%, #43e 100%);
+  }

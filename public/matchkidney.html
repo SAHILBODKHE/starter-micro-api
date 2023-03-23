@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Match Form</title>
+    <link rel="stylesheet" href="css/display.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="" />
+  </head>
+  <style>
+    body {
+      background-color: #20bf55;
+      background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="Content">
+        <form action="/match/kidney" method="post">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your name" required />
+            </div>
+
+            <div class="input-box">
+              <span class="details">User ID</span>
+              <input
+                type="text"
+                name="mid"
+                placeholder="Enter the required user ID"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Hospital ID</span>
+              <input
+                type="text"
+                name="hid"
+                placeholder="Enter the required Hospital ID"
+                required
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Type</span>
+              <input type="text" placeholder="Enter the type" required />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Organ Code</span>
+              <input
+                type="text"
+                name="orgc"
+                placeholder="Enter the organ donation code"
+                required
+              />
+            </div>
+          </div>
+          <button class="button" type="submit">
+            REGISTER
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container2">
+      <div class="title">Finalize Match</div>
+      <div class="Content">
+        <form action="#">
+          <div class="user details">
+            <br />
+            <div class="input-box">
+              <span class="details">Enter ID</span>
+              <input type="text" placeholder="Enter the confirmed ID" />
+            </div>
+            <br />
+            <div class="input-box">
+              <span class="details">Enter Hospital ID</span>
+              <input
+                type="text"
+                placeholder="Enter the confirmed Hospital ID"
+              />
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="GO" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

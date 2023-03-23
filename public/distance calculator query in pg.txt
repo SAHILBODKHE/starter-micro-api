@@ -1,0 +1,6 @@
+select city_name,ST_Distance(a.geolocation,mum.geolocation) as distance
+ from cityinfo a,
+ lateral(
+       select city_id,geolocation from cityinfo where city_name='mumbai')
+as mum
+ where a.city_id <> mum.city_id order by distance ;

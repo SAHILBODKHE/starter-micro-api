@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<style>
+.adjust{
+  padding-left: 600px;
+   padding-top:200px ;
+}
+.lightish{
+  color:black;
+  background: linear-gradient(to bottom, #9be15d, #00e3ae);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+  width: 1000px;
+  
+}
+.btn{
+padding-left:120px;
+font-size: 30px;
+
+}
+.hidden{
+  display: none;
+}
+h2,p{
+  padding-left: 700px;
+  font-size: 70px;
+  
+}
+</style>
+<body>
+    <div class="w3-container adjust">
+        <ul class="w3-ul w3-card-4  lightish">
+            <% for (var i=ik; i>ik-1; i--){%>  
+              <form action="/<%=i+1%>" method="post">
+          <li class="w3-bar">
+            <div class="w3-bar-item">
+              <span class="w3-large"></span>
+              <br />
+              <span><%= idno[i] %> </span>
+              <span><%= NAME[i] %></span>  <span><I><%=lastn[i]%></I></span><span>___</span><span>Hospital-id:<%=hospidno[i]%></span><br>
+              <!-- <button type="submit">Details</button> -->
+              <div id='info' class="w3">
+             <span><%= adc[i] %></span><br>
+            <span><%= emailid[i] %></span><br><span><%= addr[i] %></span><br><span><%= mn[i] %></span><br><span><%= nation[i] %></span><br><span><%= state[i] %></span><br><span><%= zipcode[i] %></span><br><span><%= htg[i] %></span><br><span><%= wtg[i] %></span><span><%= gend[i] %></span><br><span><%= fat[i] %></span><br><span><%= mom[i] %></span><br><span><%= odt[i] %></span><br><span><%= bdt[i] %></span><br><span><%= tst[i] %></span><br><span><%= bsz[i] %></span><br><span><%= mpsco[i] %></span><br><span><%= lyt[i] %></span><br><span><%= nha[i] %></span>
+            <span><%= cb[i] %></span><br><span><%= orc[i] %></span><br><span><%= es[i] %></span><br><span><%= rg[i] %></span><br><span><%= rrp[i] %></span>
+            </div>
+            </div>
+        </li>
+   
+        <% } %>
+
+        </ul>
+        
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "ejs": "^3.1.8",
+    "express": "^4.17.2",
+    "leaflet": "^1.7.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "stripe": "^8.207.0"
+  },
+  "name": "organ-donation-project",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SAHILBODKHE/project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SAHILBODKHE/project/issues"
+  },
+  "homepage": "https://github.com/SAHILBODKHE/project#readme",
+  "description": ""
+}
