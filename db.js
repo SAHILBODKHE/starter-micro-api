@@ -8,10 +8,10 @@ const { Pool } = require('pg')
 //   database: 'orgtrans',
 // })
 const pool = new Pool({
-  database: 'postgres',
-  host: 'database-1.couyblghllc8.us-east-1.rds.amazonaws.com',
-  password: 'britishtyphoon',
-  port: 5432,
+  database: 'railway',
+  host: 'containers-us-west-186.railway.app',
+  password: 'ufdrMiV4osmJkS5Md3Yc',
+  port: 6928,
   user: 'postgres',
 })
 module.exports = pool
