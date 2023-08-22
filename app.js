@@ -143,16 +143,16 @@ app.post('/hospinfo.html', async (req, res) => {
     var locat = req.body.loc
     console.log(locat)
  const arr = locat.split(',');
-let lat = parseFloat(arr[0]); // Convert latitude to float
-let long = parseFloat(arr[1]); // Convert longitude to float
-let point = `(${long} ${lat})`;
-
-console.log(lat, long);
-
-const hospinfo = await pool.query(
-  'INSERT INTO hospitalinfo(hosp_id, hospname, hosp_address, phone, website, organs, longitude, latitude, geolocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, ST_GeomFromText($9))',
-  [hospid, hospname, hospadd, hospphone, hospem, hosporg, long, lat, point]
-);
+    let lat = parseFloat(arr[0]);
+    let long = parseFloat(arr[1]);
+    let point = `${lat},${long}`; // Correct format for POINT
+    
+    console.log(lat, long);
+    
+    const hospinfo = await pool.query(
+      'INSERT INTO hospitalinfo(hosp_id, hospname, hosp_address, phone, website, organs, longitude, latitude, geolocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, POINT($9,$10))',
+      [hospid, hospname, hospadd, hospphone, hospem, hosporg, long, lat,long,lat]
+    );
 
 
     res.redirect('/hospservices.html')
