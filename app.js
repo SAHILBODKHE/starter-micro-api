@@ -145,7 +145,7 @@ app.post('/hospinfo.html', async (req, res) => {
     const arr = locat.split(',')
     let lat = arr[0]
     let long = arr[1]
-    let point = `point(${long} ${lat})`
+    let point = `(${long} ${lat})`
     console.log(lat, long)
     const hospinfo = await pool.query(
       'INSERT INTO hospitalinfo(hosp_id,hospname,hosp_address,phone,website,organs,longitude,latitude,geolocation) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
