@@ -142,15 +142,17 @@ app.post('/hospinfo.html', async (req, res) => {
     var hosporg = req.body.organ
     var locat = req.body.loc
     console.log(locat)
-    const arr = locat.split(',')
-    let lat = arr[0]
-    let long = arr[1]
-    let point = `(${long} ${lat})`
-    console.log(lat, long)
-    const hospinfo = await pool.query(
-      'INSERT INTO hospitalinfo(hosp_id,hospname,hosp_address,phone,website,organs,longitude,latitude,geolocation) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
-      [hospid, hospname, hospadd, hospphone, hospem, hosporg, long, lat, point],
-    )
+   const arr = locat.split(',');
+let lat = arr[0];
+let long = arr[1];
+let point = `(${long} ${lat})`; // Corrected order of longitude and latitude
+console.log(lat, long);
+
+const hospinfo = await pool.query(
+  'INSERT INTO hospitalinfo(hosp_id, hospname, hosp_address, phone, website, organs, longitude, latitude, geolocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+  [hospid, hospname, hospadd, hospphone, hospem, hosporg, long, lat, point],
+);
+
     res.redirect('/hospservices.html')
     console.log(hosporg)
   } catch (err) {
