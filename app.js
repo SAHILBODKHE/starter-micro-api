@@ -145,7 +145,7 @@ app.post('/hospinfo.html', async (req, res) => {
    const arr = locat.split(',');
 let lat = arr[0];
 let long = arr[1];
-let point = `(${long} ${lat})`; // Corrected order of longitude and latitude
+let point = `POINT(${long} ${lat})`; // Corrected order of longitude and latitude
 console.log(lat, long);
 
 const hospinfo = await pool.query(
