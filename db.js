@@ -9,9 +9,9 @@ const { Pool } = require('pg')
 // })
 const pool = new Pool({
   database: 'railway',
-  host: 'containers-us-west-133.railway.app',
-  password: 'LAXIVzON8VXNL9ChDeH2',
-  port: 7694,
+  host: 'containers-us-west-142.railway.app',
+  password: '3rfELoMJ7hSuijNYTULG',
+  port: 6369,
   user: 'postgres',
 })
 module.exports = pool
